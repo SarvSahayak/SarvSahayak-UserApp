@@ -1,9 +1,6 @@
-import React, { useEffect, createContext, useReducer, useContext, useState } from "react";
+import React, { createContext } from "react";
 import styled from "styled-components";
-import Form from './components/Form/form'
-import { BrowserRouter as Router,Route,Switch, withRouter, useHistory, Redirect } from "react-router-dom";
-import { Style } from "@material-ui/icons";
-import { Nav } from "react-bootstrap";
+import { BrowserRouter as Router,Route,Switch } from "react-router-dom";
 
 import "./App.css";
 
@@ -22,16 +19,16 @@ const AppContainer = styled.div`
   justify-content: center;
 `;
 
-const FormContainer = styled.div`
-html, body {
-    height:100%;
-    width: 70%;
-    background: #414141;
-    margin-top: 10px;
-    margin-left: 25% ;
-    margin-right: 25% ;
-  }
-`;
+// const FormContainer = styled.div`
+// html, body {
+//     height:100%;
+//     width: 70%;
+//     background: #414141;
+//     margin-top: 10px;
+//     margin-left: 25% ;
+//     margin-right: 25% ;
+//   }
+// `;
 
 
 // const App = () => {
@@ -74,23 +71,6 @@ export const UserContext = createContext([null, () => {}])
 
 
 function App() {
-  const checkAuth = async () => {
-    console.log("check auth")
-     const res =  await fetch('https://sarvsahayakapi.herokuapp.com/users/me', {
-      headers: {
-        authorization: "Bearer " + localStorage.getItem("authToken"),
-      },
-    })
-
-    if (res.status===401){
-      console.log(res)
-      return false
-    }
-    else {
-      console.log(res)
-      return true
-    }
-  }
 
   return (
     <Router>
