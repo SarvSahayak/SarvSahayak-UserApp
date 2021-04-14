@@ -2,6 +2,7 @@ import React, { createContext } from "react";
 import styled from "styled-components";
 import { BrowserRouter as Router,Route,Switch } from "react-router-dom";
 
+
 import "./App.css";
 
 import { AccountBox } from "./components/accountBox";
@@ -71,6 +72,7 @@ export const UserContext = createContext([null, () => {}])
 
 
 function App() {
+
 
   return (
     <Router>
