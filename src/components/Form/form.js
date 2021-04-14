@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios'
 import { ConversationalForm } from 'conversational-form'
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
+
 
 
 const url = 'https://sarvsahayakapi.herokuapp.com/complaints'
@@ -19,7 +20,13 @@ function showPosition(position) {
   lat = position.coords.latitude
   long = position.coords.longitude
 }
-const NAME = userData.name
+var NAME 
+if (userData===null){
+  NAME = 'USER'
+}
+else  {
+  NAME = userData.name
+}
 getLocation()
 
 export default class MyForm extends React.Component {

@@ -1,17 +1,18 @@
 import React from 'react'
-import {Switch, Route, Redirect} from 'react-router-dom'
+import {Switch, Route} from 'react-router-dom'
 import styled from 'styled-components'
 import Form from './Form/form'
 
-const AppContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  margin-top: 150px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
+// const AppContainer = styled.div`
+//   width: 100%;
+//   height: 100%;
+//   margin-top: 150px;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+// `;
+
 
 const FormContainer = styled.div`
 html, body {
