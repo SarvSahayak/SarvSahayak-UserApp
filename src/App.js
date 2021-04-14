@@ -1,12 +1,16 @@
-import "./App.css";
+import React, { useEffect, createContext, useReducer, useContext, useState } from "react";
 import styled from "styled-components";
-import { AccountBox } from "./components/accountBox";
-// import "../node_modules/bootstrap/dist/css/bootstrap.css";
-// import { UserForm } from './components/userPages/UserForm';
 import Form from './components/Form/form'
-import { BrowserRouter as Router,Route,Switch, withRouter } from "react-router-dom";
-import Navbar from './components/layout/Navbar'
+import { BrowserRouter as Router,Route,Switch, withRouter, useHistory, Redirect } from "react-router-dom";
 import { Style } from "@material-ui/icons";
+import { Nav } from "react-bootstrap";
+
+import "./App.css";
+
+import { AccountBox } from "./components/accountBox";
+import Navbar from './components/layout/Navbar'
+import ProtectedRoute from './components/ProtectedRoute'
+import AllRoutes from './components/AllRoutes'
 
 const AppContainer = styled.div`
   width: 100%;
@@ -49,23 +53,65 @@ html, body {
 //   );
 // }
 
+// 
+
+// const Routes = () => {
+//   const { state, dispatch } = useContext(UserContext);
+//   const history = useHistory();
+//   useEffect(() => {
+//     const user = JSON.parse(localStorage.getItem("user"));
+
+//     if (user) {
+//       
+//     } else {
+//       if (!history.location.pathname.startsWith("/reset"))
+//         history.push("/login");
+//     }
+//   }, []);
+
+
+export const UserContext = createContext([null, () => {}])
+
+
 function App() {
+  const checkAuth = async () => {
+    console.log("check auth")
+     const res =  await fetch('https://sarvsahayakapi.herokuapp.com/users/me', {
+      headers: {
+        authorization: "Bearer " + localStorage.getItem("authToken"),
+      },
+    })
+
+    if (res.status===401){
+      console.log(res)
+      return false
+    }
+    else {
+      console.log(res)
+      return true
+    }
+  }
+
   return (
     <Router>
 
     <div>
-    {/* <Switch> */}
-    <AppContainer>
-    <Route exact path="/" component={AccountBox} />
-    </AppContainer>
-    {/* <AppContainer>
-      <AccountBox />
-    </AppContainer> */}
-
-    <FormContainer>
-       <Route exact path="/form" component={Form} />
-    </FormContainer>
-    {/* </Switch> */}
+      <Navbar/>
+    <Switch>
+    <Route
+            exact
+            path="/login"
+            render={(props) => (
+              <AppContainer>
+                <AccountBox  {...props}/>
+              </AppContainer>
+            )}
+          />
+          <ProtectedRoute
+            path="/"
+            component={AllRoutes}
+          />
+    </Switch>
     </div>
     </Router>
   );
