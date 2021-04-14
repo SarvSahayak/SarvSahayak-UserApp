@@ -150,8 +150,8 @@ export function AccountBox(props) {
           )}
         </TopContainer>
         <InnerContainer>
-          {active === "signin" && <LoginForm />}
-          {active === "signup" && <SignupForm />}
+          {active === "signin" && <LoginForm  {...props}/>}
+          {active === "signup" && <SignupForm  {...props}/>}
         </InnerContainer>
       </BoxContainer>
     </AccountContext.Provider>
