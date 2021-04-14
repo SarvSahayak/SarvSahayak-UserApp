@@ -28,6 +28,8 @@ export function SignupForm(props) {
       console.log(response.status)
       if (response.status===201){
         localStorage.setItem("authToken",response.data.token)
+        localStorage.setItem('user', JSON.stringify(response.data.user))
+        props.history.push("/")
       }
     })
     .catch(err => console.log(err))

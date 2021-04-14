@@ -13,7 +13,6 @@ import Form from './Form/form'
 //   justify-content: center;
 // `;
 
-
 const FormContainer = styled.div`
 html, body {
     height:100%;

@@ -4,7 +4,6 @@ import { ConversationalForm } from 'conversational-form'
 // import { Redirect } from "react-router-dom";
 
 
-
 const url = 'https://sarvsahayakapi.herokuapp.com/complaints'
 
 function getLocation() {
