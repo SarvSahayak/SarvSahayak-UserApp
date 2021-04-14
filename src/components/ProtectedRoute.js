@@ -11,7 +11,6 @@ const ProtectedRoute = (props) => {
     //   },
     // })
     //   }
-    
         console.log("in protected route")
         const res =  await fetch('https://sarvsahayakapi.herokuapp.com/users/me', {
       headers: {
