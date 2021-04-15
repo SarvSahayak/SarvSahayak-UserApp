@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react"
 import axios from "axios"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import validator from 'validator';
 import {
   BoldLink,
   BoxContainer,
@@ -28,11 +29,58 @@ export function SignupForm(props) {
     setConfirmPassword(e.target.value)
     
   };
+
+  const validateEmail = (e) => {
+   setEmail(e.target.value) 
+  }
+  const validatePhoneNumber = (number) => {
+    setMobileNo(number.target.value)
+   }
   
   const submit = () => {
     const data = {
         name,email,password,mobileNo
     }
+
+    if(name.length==0 || email.length==0 || password.length ==0 || mobileNo.length==0){
+      toast.error("Properly fill all the feilds", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+      });
+      return;
+    }
+
+    if (!validator.isEmail(email)) {
+      toast.error("Enter valid Email", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+      });
+      return;
+    }
+    if(!validator.isMobilePhone(mobileNo) || mobileNo.length<10){
+      toast.error("Enter valid MobileNumber", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+      });
+    return ;
+    }
+    
+
 
     let vari=0;
     if(password.length < 8){
@@ -104,8 +152,8 @@ export function SignupForm(props) {
         {"error label"}
       </div>
         <Input type="text" placeholder="Full Name" value={name} onChange={(e) =>setName(e.target.value)}/>
-        <Input type="email" placeholder="Email" value={email} onChange={(e) =>setEmail(e.target.value)}/>
-        <Input type="tel" placeholder="Mobile No." value={mobileNo} minlength="10" maxLength="10" onChange={(e) => setMobileNo(e.target.value)}/>
+        <Input type="email" placeholder="Email" value={email} onChange={(e) =>validateEmail(e)}/>
+        <Input type="tel" placeholder="Mobile No." value={mobileNo} minlength="10" maxLength="10" onChange={(e) => validatePhoneNumber(e)}/>
         <Input type="password" placeholder="Password" value={password} minlength="8" onChange={(e) =>setPassword(e.target.value)}/>
         <Input type="password" placeholder="Confirm Password" value={confirmPassword}onChange={(e) => checkvalidation(e)}/>
       </FormContainer>
