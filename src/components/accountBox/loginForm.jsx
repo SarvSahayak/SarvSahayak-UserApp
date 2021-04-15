@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
@@ -17,8 +17,20 @@ export function LoginForm(props) {
   const { switchToSignup } = useContext(AccountContext);
   const [email, setEmail ] = useState("")
   const [ password, setPassword ] = useState("")
-  const submit = () => {
 
+  useEffect(async () => {
+        const res =  await fetch('https://sarvsahayakapi.herokuapp.com/users/me', {
+      headers: {
+        authorization: "Bearer " + localStorage.getItem("authToken"),
+      },
+    })
+
+    if (res.status===200){
+        props.history.push("/")
+    }
+    }, [])
+
+  const submit = () => {
     const data = {
      email,
      password
@@ -28,7 +40,11 @@ export function LoginForm(props) {
     )
     .then(response => {
       console.log(response.status)
+      console.log(props)
       localStorage.setItem("authToken",response.data.token)
+      console.log(response)
+      localStorage.setItem('user', JSON.stringify(response.data.user))
+      props.history.push("/")
     })
     .catch(function(error) {
       if(error.response.status){
@@ -48,11 +64,10 @@ export function LoginForm(props) {
     
             
 }
-
-  return (
+  return(
     <BoxContainer>
       <FormContainer>
-        <Input type="email" placeholder="Email" value={email} onChange={(e) =>{console.log(e.target.value); setEmail(e.target.value)}}/>
+        <Input type="email" placeholder="Email" value={email} onChange={(e) =>{setEmail(e.target.value)}}/>
         <Input type="password" placeholder="Password" value={password} onChange={(e) =>setPassword(e.target.value)}/>
       </FormContainer>
       <Marginer direction="vertical" margin={10} />
@@ -68,5 +83,5 @@ export function LoginForm(props) {
       </MutedLink>
       <ToastContainer />
     </BoxContainer>
-  );
+  )
 }

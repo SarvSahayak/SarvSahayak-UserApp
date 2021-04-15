@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios'
-import { ConversationalForm } from 'conversational-form';
+import { ConversationalForm } from 'conversational-form'
+// import { Redirect } from "react-router-dom";
+
 
 const url = 'https://sarvsahayakapi.herokuapp.com/complaints'
 
@@ -9,13 +11,21 @@ function getLocation() {
     navigator.geolocation.getCurrentPosition(showPosition);
   }
 }
+
+const userData = JSON.parse(localStorage.getItem('user'))
 var lat
 var long
 function showPosition(position) {
   lat = position.coords.latitude
   long = position.coords.longitude
 }
-
+var NAME 
+if (userData===null){
+  NAME = 'USER'
+}
+else  {
+  NAME = userData.name
+}
 getLocation()
 
 export default class MyForm extends React.Component {
@@ -26,7 +36,7 @@ export default class MyForm extends React.Component {
         'tag': 'select',
         'type': 'radio',
         'placeholder':"Choose category",
-        'cf-questions':'Choose category of your issue',
+        'cf-questions':`Hello ${NAME},\nChoose category of your issue`,
         'isMultipleChoice': false,
         'isChecked' : false,
         'children':[
@@ -71,6 +81,7 @@ export default class MyForm extends React.Component {
   }
   
   componentDidMount() {
+    console.log(this.props)
     this.cf = ConversationalForm.startTheConversation({
       options: {
         submitCallback: this.submitCallback,
@@ -125,7 +136,7 @@ export default class MyForm extends React.Component {
   
   render() {
     return (
-      <div>
+      <div style={{height: '70vh', border: '5px red'}}>
         <div
           ref={ref => this.elem = ref}
         />
