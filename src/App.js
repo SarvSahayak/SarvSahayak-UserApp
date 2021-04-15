@@ -91,6 +91,13 @@ function App() {
             path="/"
             component={AllRoutes}
           />
+          <Route
+            render={(props) => (
+              <AppContainer>
+                <AccountBox  {...props}/>
+              </AppContainer>
+            )}
+          />
     </Switch>
     </div>
     </Router>
