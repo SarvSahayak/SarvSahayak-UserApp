@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   BoldLink,
   BoxContainer,
@@ -44,7 +46,23 @@ export function LoginForm(props) {
       localStorage.setItem('user', JSON.stringify(response.data.user))
       props.history.push("/")
     })
-    .catch(err => console.log(err))
+    .catch(function(error) {
+      if(error.response.status){
+        toast.error(`Incorrect Email-id or password`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined
+        })
+
+      }
+    }
+    )
+    
+            
 }
   return(
     <BoxContainer>
@@ -63,6 +81,7 @@ export function LoginForm(props) {
           Signup
         </BoldLink>
       </MutedLink>
+      <ToastContainer />
     </BoxContainer>
   )
 }
