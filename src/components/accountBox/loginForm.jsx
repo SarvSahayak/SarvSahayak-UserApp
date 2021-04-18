@@ -93,6 +93,7 @@ const validateEmail = (e) => {
 }
   return(
     <BoxContainer>
+    <div>
       <FormContainer>
         <Input type="email" placeholder="Email" value={email} onChange={(e) =>{validateEmail(e)}}/>
         <Input type="password" placeholder="Password" value={password} onChange={(e) =>setPassword(e.target.value)}/>
@@ -109,6 +110,7 @@ const validateEmail = (e) => {
         </BoldLink>
       </MutedLink>
       <ToastContainer />
-    </BoxContainer>
+      </div>
+     </BoxContainer>
   )
 }
