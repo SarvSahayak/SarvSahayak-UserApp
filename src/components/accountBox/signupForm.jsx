@@ -3,6 +3,7 @@ import axios from "axios"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import validator from 'validator';
+import styled from "styled-components";
 import {
   BoldLink,
   BoxContainer,
@@ -30,6 +31,13 @@ export function SignupForm(props) {
     
   };
 
+  const isdiabled=()=>{
+    if(!email || !name || !password || !mobileNo || !confirmPassword){
+    return true
+    }
+    return false
+  }
+
   const validateEmail = (e) => {
    setEmail(e.target.value) 
   }
@@ -43,8 +51,8 @@ export function SignupForm(props) {
     }
 
     if(name.length==0 || email.length==0 || password.length ==0 || mobileNo.length==0){
-      toast.error("Properly fill all the feilds", {
-        position: "top-right",
+      toast.error("Properly fill all the fields", {
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -57,7 +65,7 @@ export function SignupForm(props) {
 
     if (!validator.isEmail(email)) {
       toast.error("Enter valid Email", {
-        position: "top-right",
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -69,7 +77,7 @@ export function SignupForm(props) {
     }
     if(!validator.isMobilePhone(mobileNo) || mobileNo.length<10){
       toast.error("Enter valid MobileNumber", {
-        position: "top-right",
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -87,7 +95,7 @@ export function SignupForm(props) {
       // console.log("password short");
       // vari =1;
       toast.error("Password size must grater than 8 characters ", {
-        position: "top-right",
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -100,7 +108,7 @@ export function SignupForm(props) {
     if(password != confirmPassword){
       // console.log("cnf pass and pass not match")
       toast.error("confirm password and password doesn't match ", {
-        position: "top-right",
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -129,7 +137,7 @@ export function SignupForm(props) {
     .catch(function(error) {
       if(error.response.status){
         toast.info(`${email} Email is already registred with us`, {
-          position: "top-right",
+          position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -140,7 +148,7 @@ export function SignupForm(props) {
 
       }
     }
-            )
+      )
   }
   // }
    
@@ -157,12 +165,12 @@ export function SignupForm(props) {
         <Input type="password" placeholder="Password" value={password} minlength="8" onChange={(e) =>setPassword(e.target.value)}/>
         <Input type="password" placeholder="Confirm Password" value={confirmPassword}onChange={(e) => checkvalidation(e)}/>
       </FormContainer>
-      <Marginer direction="vertical" margin={10} />
-      <SubmitButton type="submit" onClick = {submit}>Signup</SubmitButton>
+      <Marginer direction="vertical" margin={10} /> 
+      <SubmitButton id ={'submitbtn'}type="submit" disabled={isdiabled()} onClick = {submit}>Signup</SubmitButton>
       <Marginer direction="vertical" margin="1em" />
       <MutedLink href="/form">
         Already have an account?
-        <BoldLink href="#" onClick={switchToSignin}>
+        <BoldLink href="/signin" onClick={switchToSignin}>
           Signin
         </BoldLink>
       </MutedLink>

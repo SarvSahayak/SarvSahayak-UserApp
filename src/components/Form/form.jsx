@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios'
 import { ConversationalForm } from 'conversational-form'
-// import { Redirect } from "react-router-dom";
+import { BoxContainer } from '../accountBox/common';
+// import { Redirect } from "react-router-dom";  
 
 
 const url = 'https://sarvsahayakapi.herokuapp.com/complaints'
@@ -29,7 +30,9 @@ else  {
 getLocation()
 
 export default class MyForm extends React.Component {
+  
   constructor(props) {
+  
     super(props);
     this.formFields = [
       {
@@ -78,9 +81,11 @@ export default class MyForm extends React.Component {
     ];
     
     this.submitCallback = this.submitCallback.bind(this);
+  
   }
   
   componentDidMount() {
+    
     console.log(this.props)
     this.cf = ConversationalForm.startTheConversation({
       options: {
@@ -91,9 +96,11 @@ export default class MyForm extends React.Component {
       tags: this.formFields
     });
     this.elem.appendChild(this.cf.el);
+    
   }
   
   submitCallback() {
+    
     var formDataSerialized = this.cf.getFormData(true);
     var cat = formDataSerialized['tag-0']
     const category = parseInt(cat[0])
@@ -136,11 +143,14 @@ export default class MyForm extends React.Component {
   
   render() {
     return (
-      <div style={{height: '70vh', border: '5px red'}}>
+      <BoxContainer>
+      <div style={{height: '50vh', border: '5px red',}}>
         <div
           ref={ref => this.elem = ref}
         />
       </div>
+      </BoxContainer>
     );
+    
   }
 }

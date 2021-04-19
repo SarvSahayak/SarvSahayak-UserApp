@@ -1,8 +1,8 @@
 import React from 'react'
 import {Switch, Route} from 'react-router-dom'
 import styled from 'styled-components'
-import Form from './Form/form'
-
+import Form from './Form/form.jsx'
+import '../App.css'
 // const AppContainer = styled.div`
 //   width: 100%;
 //   height: 100%;
@@ -13,16 +13,16 @@ import Form from './Form/form'
 //   justify-content: center;
 // `;
 
-const FormContainer = styled.div`
-html, body {
-    height:100%;
-    width: 70%;
-    background: #414141;
-    margin-top: 10px;
-    margin-left: 25% ;
-    margin-right: 25% ;
-  }
-`;
+// const FormContainer = styled.div`
+// html, body {
+//     height:100%;
+//     width: 70%;
+//     background: #414141;
+//     margin-top: 10px;
+//     margin-left: 25% ;
+//     margin-right: 25% ;
+//   }
+// `;
 
 const AllRoutes = () => {
     return (
@@ -31,9 +31,11 @@ const AllRoutes = () => {
                 exact
                 path="/"
                 render={(props) => (
-                <FormContainer>
+                // <FormContainer>
+                <div className="form-container">
                     <Form  {...props}/>
-                </FormContainer>
+                </div>
+                // </FormContainer>
                 )}
             />
         </Switch>

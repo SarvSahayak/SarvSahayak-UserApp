@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import validator from 'validator';
 import {
   BoldLink,
   BoxContainer,
@@ -13,10 +14,23 @@ import { Marginer } from "../marginer";
 import { AccountContext } from "./accountContext";
 import axios from "axios"
 
+
 export function LoginForm(props) {
   const { switchToSignup } = useContext(AccountContext);
   const [email, setEmail ] = useState("")
   const [ password, setPassword ] = useState("")
+
+  
+const validateEmail = (e) => {
+  setEmail(e.target.value) 
+ }
+  const isdiabled=()=>{
+    if(!email  || !password){
+    return true
+    }
+    return false
+  }
+  
 
   useEffect(async () => {
         const res =  await fetch('https://sarvsahayakapi.herokuapp.com/users/me', {
@@ -35,6 +49,19 @@ export function LoginForm(props) {
      email,
      password
     }
+    if (!validator.isEmail(email)) {
+      toast.error("Enter valid Email", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+      });
+      return;
+    }
+
     axios.post('https://sarvsahayakapi.herokuapp.com/users/login',
     data
     )
@@ -66,14 +93,15 @@ export function LoginForm(props) {
 }
   return(
     <BoxContainer>
+    <div>
       <FormContainer>
-        <Input type="email" placeholder="Email" value={email} onChange={(e) =>{setEmail(e.target.value)}}/>
+        <Input type="email" placeholder="Email" value={email} onChange={(e) =>{validateEmail(e)}}/>
         <Input type="password" placeholder="Password" value={password} onChange={(e) =>setPassword(e.target.value)}/>
       </FormContainer>
       <Marginer direction="vertical" margin={10} />
       <MutedLink href="#">Forget your password?</MutedLink>
       <Marginer direction="vertical" margin="1.6em" />
-      <SubmitButton type="submit" onClick={submit}>Signin</SubmitButton>
+      <SubmitButton type="submit" disabled={isdiabled()} onClick={submit}>Signin</SubmitButton>
       <Marginer direction="vertical" margin="1em" />
       <MutedLink href="#">
         Don't have an accoun?{" "}
@@ -82,6 +110,7 @@ export function LoginForm(props) {
         </BoldLink>
       </MutedLink>
       <ToastContainer />
-    </BoxContainer>
+      </div>
+     </BoxContainer>
   )
 }
