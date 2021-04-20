@@ -15,7 +15,7 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem('user')
     localStorage.removeItem('authToken')
-    window.location.href = '/login'
+    window.location.href = '/'
   }
   return (
     <nav className="navbar navbar-expand-lg navbar-dark" style={{zIndex: '1', backgroundColor: '#282c34'}}>
