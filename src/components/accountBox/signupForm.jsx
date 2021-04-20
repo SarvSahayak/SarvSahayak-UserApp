@@ -131,7 +131,7 @@ export function SignupForm(props) {
         props.history.push("/")
 
       } else if(response.status===400){
-        console.log("test");
+        //console.log("test");
       }
     })
     .catch(function(error) {
@@ -168,9 +168,9 @@ export function SignupForm(props) {
       <Marginer direction="vertical" margin={10} /> 
       <SubmitButton id ={'submitbtn'}type="submit" disabled={isdiabled()} onClick = {submit}>Signup</SubmitButton>
       <Marginer direction="vertical" margin="1em" />
-      <MutedLink href="/form">
+      <MutedLink>
         Already have an account?
-        <BoldLink href="/signin" onClick={switchToSignin}>
+        <BoldLink href="#" onClick={switchToSignin}>
           Signin
         </BoldLink>
       </MutedLink>
