@@ -128,7 +128,7 @@ export function SignupForm(props) {
       if (response.status===201){
         localStorage.setItem("authToken",response.data.token)
         localStorage.setItem('user', JSON.stringify(response.data.user))
-        props.history.push("/")
+        window.location.href = "/"
 
       } else if(response.status===400){
         //console.log("test");
