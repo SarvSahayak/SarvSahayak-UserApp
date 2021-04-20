@@ -66,12 +66,12 @@ const validateEmail = (e) => {
     data
     )
     .then(response => {
-      console.log(response.status)
-      console.log(props)
+      //console.log(response.status)
+      //console.log(props)
       localStorage.setItem("authToken",response.data.token)
-      console.log(response)
+      //console.log(response)
       localStorage.setItem('user', JSON.stringify(response.data.user))
-      props.history.push("/")
+      window.location.href = "/"
     })
     .catch(function(error) {
       if(error.response.status){

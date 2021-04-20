@@ -86,7 +86,7 @@ export default class MyForm extends React.Component {
   
   componentDidMount() {
     
-    console.log(this.props)
+    //console.log(this.props)
     this.cf = ConversationalForm.startTheConversation({
       options: {
         submitCallback: this.submitCallback,
@@ -113,9 +113,9 @@ export default class MyForm extends React.Component {
       category,
       address: formDataSerialized.address
     }
-    console.log(formDataSerialized)
-    console.log(data)
-    console.log("from react")
+    // console.log(formDataSerialized)
+    // console.log(data)
+    // console.log("from react")
     axios.post(url, 
       data
     , {
@@ -129,13 +129,13 @@ export default class MyForm extends React.Component {
       else {
         this.cf.addRobotChatResponse(`Your complaint hasn't been registered!`)
       }
-      console.log(res.status)
+      //console.log(res.status)
     }
       
       
     ).catch((err) => {
       this.cf.addRobotChatResponse(`No ngo found in your locality.\nSorry for the inconvenience.`)
-      console.log(err)
+      // console.log(err)
     })
 
     // {name}
@@ -144,8 +144,9 @@ export default class MyForm extends React.Component {
   render() {
     return (
       <BoxContainer>
-      <div style={{height: '50vh', border: '5px red',}}>
+      <div >
         <div
+        style={{maxWidth: '95%'}}
           ref={ref => this.elem = ref}
         />
       </div>

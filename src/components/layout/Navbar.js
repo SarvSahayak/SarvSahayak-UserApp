@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   useEffect(() => {
-    console.log(localStorage.getItem('user'))
+    // console.log(localStorage.getItem('user'))
     if(localStorage.getItem('user') !== null) {
       setIsLoggedIn(true)
     } else {
@@ -18,7 +18,7 @@ const Navbar = () => {
     window.location.href = '/login'
   }
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary" style={{zIndex: '1'}}>
+    <nav className="navbar navbar-expand-lg navbar-dark" style={{zIndex: '1', backgroundColor: '#282c34'}}>
       <div className="container">
         <Link className="navbar-brand" exact to="/">
           

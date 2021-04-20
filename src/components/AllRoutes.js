@@ -32,10 +32,18 @@ const AllRoutes = () => {
                 path="/"
                 render={(props) => (
                 // <FormContainer>
-                <div className="form-container">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-12 col-lg-8 offset-lg-2">
+                            <div className="form-container">
+                                <div className="form-container-inner">
                     <Form  {...props}/>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
                 </div>
-                // </FormContainer>
+              
                 )}
             />
         </Switch>
