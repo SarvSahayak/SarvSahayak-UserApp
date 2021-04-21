@@ -50,6 +50,19 @@ const validateEmail = (e) => {
      password
     }
 
+    if(email.length==0 || password.length ==0){
+      toast.error("Properly fill all the fields", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+      });
+      return;
+    }
+
 
     if (!validator.isEmail(email)) {
       toast.error("Enter valid Email", {
@@ -64,18 +77,6 @@ const validateEmail = (e) => {
       return;
     }
     
-    if(email.length==0 || password.length ==0){
-      toast.error("Properly fill all the fields", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined
-      });
-      return;
-    }
 
     axios.post('https://sarvsahayakapi.herokuapp.com/users/login',
     data

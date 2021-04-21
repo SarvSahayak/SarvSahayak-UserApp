@@ -96,7 +96,7 @@ export function SignupForm(props) {
     if(password.length < 8){
       // console.log("password short");
       // vari =1;
-      toast.error("Password size must grater than 8 characters ", {
+      toast.error("Password size must greater than 8 characters ", {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
