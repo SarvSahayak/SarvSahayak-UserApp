@@ -24,12 +24,12 @@ export function LoginForm(props) {
 const validateEmail = (e) => {
   setEmail(e.target.value) 
  }
-  const isdiabled=()=>{
-    if(!email  || !password){
-    return true
-    }
-    return false
-  }
+  // const isdiabled=()=>{
+  //   if(!email  || !password){
+  //   return true
+  //   }
+  //   return false
+  // }
   
 
   useEffect(async () => {
@@ -49,8 +49,23 @@ const validateEmail = (e) => {
      email,
      password
     }
+
+
     if (!validator.isEmail(email)) {
       toast.error("Enter valid Email", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+      });
+      return;
+    }
+    
+    if(email.length==0 || password.length ==0){
+      toast.error("Properly fill all the fields", {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -101,7 +116,7 @@ const validateEmail = (e) => {
       <Marginer direction="vertical" margin={10} />
       <MutedLink href="#">Forget your password?</MutedLink>
       <Marginer direction="vertical" margin="1.6em" />
-      <SubmitButton type="submit" disabled={isdiabled()} onClick={submit}>Signin</SubmitButton>
+      <SubmitButton type="submit"  onClick={submit}>Signin</SubmitButton>
       <Marginer direction="vertical" margin="1em" />
       <MutedLink href="#">
         Don't have an accoun?{" "}
