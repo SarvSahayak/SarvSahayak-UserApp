@@ -86,7 +86,7 @@ export default class MyForm extends React.Component {
   
   componentDidMount() {
     
-    //console.log(this.props)
+    console.log(this.props)
     this.cf = ConversationalForm.startTheConversation({
       options: {
         submitCallback: this.submitCallback,
@@ -144,7 +144,7 @@ export default class MyForm extends React.Component {
   render() {
     return (
       <BoxContainer>
-      <div >
+      <div style={{height: '50vh', border: '5px red',}}>
         <div
         style={{maxWidth: '95%'}}
           ref={ref => this.elem = ref}

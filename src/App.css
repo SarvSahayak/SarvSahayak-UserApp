@@ -38,33 +38,133 @@
 }
 
 .form-container{
-  height: 90vh;
-  background-color: #fff;
-  border: 20px solid #2f2f2f !important;
-    border-radius: 13px;
-    padding: 20px;
-    z-index: 999999;
-    margin-top: 8px;
+
+  padding: 20px 20px;
+  position: absolute;
+  width: 65%;
+  min-height: 50%;
+  max-height: 50%;
+  bottom: 0;
+  height: 50%;
+  overflow: hidden;
+  margin-left: 20%;
+  margin-right: 20%;
+  border: 10px solid rebeccapurple;
+  
+  margin-bottom: 10%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  align-items: baseline;
+  /* background-color: #fff; */
 
 }
 
-.conversational-form {
-  /* max-width: 95% !important; 
-  max-height: 98% !important; */
-  border-radius: 13px;
-  margin: 12px 20px 4px 20px !important;
-}
 @media screen and (max-width:500px) {
 
+  .form-container{
+    
+  /* padding: 20px 20px; */
+  position: absolute;
+  /* width: 75%; */
+  /* min-height: 50%;
+  max-height: 50%; */
+  width: 280px;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 19px;
+  background-color: #fff;
+  box-shadow: 0 0 2px rgba(15, 15, 15, 0.28);
+  position: relative;
+  overflow: hidden;
+  bottom: 0;
+  height: 50%;
+  overflow: hidden;
+  margin-left: 10%;
+  margin-right: 10%;
+  border: 10px solid rgb(27, 26, 27);
+  
+  
+  margin-top: 10%;
+  margin-bottom: 10%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  align-items: baseline;
+  }
   
 }
 
 
 @media screen and (max-width:300px) {
 
+  .form-container{
+    
+  /* padding: 20px 20px; */
+  position: absolute;
+  /* width: 75%; */
+  /* min-height: 50%;
+  max-height: 50%; */
+  width: 200px;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 19px;
+  background-color: #fff;
+  box-shadow: 0 0 2px rgba(15, 15, 15, 0.28);
+  position: relative;
+  overflow: hidden;
+  bottom: 0;
+  height: 50%;
+  overflow: hidden;
+  margin-left: 10%;
+  margin-right: 10%;
+  border: 10px solid rgb(224, 66, 27);
+  
+  
+  margin-top: 10%;
+  margin-bottom: 10%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  align-items: baseline;
+  }
+  
 }
 @media  all  and (max-width:217px) {
 
+  .form-container{
+    
+  /* padding: 20px 20px; */
+  position: absolute;
+  /* width: 75%; */
+  /* min-height: 50%;
+  max-height: 50%; */
+  width: 150px;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 19px;
+  background-color: #fff;
+  box-shadow: 0 0 2px rgba(15, 15, 15, 0.28);
+  position: relative;
+  overflow: hidden;
+  bottom: 0;
+  height: 50%;
+  overflow: hidden;
+  margin-left: 10%;
+  margin-right: 10%;
+  border: 10px solid rgb(27, 224, 37);
+  
+  
+  margin-top: 10%;
+  margin-bottom: 10%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  align-items: baseline;
+  }
   
 }
 /* a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,main,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section{display:block}[hidden]{display:none}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:"";content:none}table{border-collapse:collapse;border-spacing:0}header{position:fixed;z-index:1;top:0;width:100%;background:#1c1c1e;display:grid;margin-left:auto;margin-right:auto;grid-template-columns:repeat(12,1fr);grid-gap:40px;max-width:1340px;padding-left:0;padding-right:0}

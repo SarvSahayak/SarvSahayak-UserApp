@@ -18,7 +18,7 @@ const Navbar = () => {
     window.location.href = '/'
   }
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark" style={{zIndex: '1', backgroundColor: '#282c34'}}>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary" style={{zIndex: '1'}}>
       <div className="container">
         <Link className="navbar-brand" exact to="/">
           
