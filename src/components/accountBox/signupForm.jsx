@@ -31,12 +31,12 @@ export function SignupForm(props) {
     
   };
 
-  const isdiabled=()=>{
-    if(!email || !name || !password || !mobileNo || !confirmPassword){
-    return true
-    }
-    return false
-  }
+  // const isdiabled=()=>{
+  //   if(!email || !name || !password || !mobileNo || !confirmPassword){
+  //   return true
+  //   }
+  //   return false
+  // }
 
   const validateEmail = (e) => {
    setEmail(e.target.value) 
@@ -49,7 +49,6 @@ export function SignupForm(props) {
     const data = {
         name,email,password,mobileNo
     }
-
     if(name.length==0 || email.length==0 || password.length ==0 || mobileNo.length==0){
       toast.error("Properly fill all the fields", {
         position: "top-center",
@@ -63,6 +62,7 @@ export function SignupForm(props) {
       return;
     }
 
+    
     if (!validator.isEmail(email)) {
       toast.error("Enter valid Email", {
         position: "top-center",
@@ -75,6 +75,8 @@ export function SignupForm(props) {
       });
       return;
     }
+
+
     if(!validator.isMobilePhone(mobileNo) || mobileNo.length<10){
       toast.error("Enter valid MobileNumber", {
         position: "top-center",
@@ -94,7 +96,7 @@ export function SignupForm(props) {
     if(password.length < 8){
       // console.log("password short");
       // vari =1;
-      toast.error("Password size must grater than 8 characters ", {
+      toast.error("Password size must greater than 8 characters ", {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -166,7 +168,7 @@ export function SignupForm(props) {
         <Input type="password" placeholder="Confirm Password" value={confirmPassword}onChange={(e) => checkvalidation(e)}/>
       </FormContainer>
       <Marginer direction="vertical" margin={10} /> 
-      <SubmitButton id ={'submitbtn'}type="submit" disabled={isdiabled()} onClick = {submit}>Signup</SubmitButton>
+      <SubmitButton id ={'submitbtn'}type="submit"  onClick = {submit}>Signup</SubmitButton>
       <Marginer direction="vertical" margin="1em" />
       <MutedLink>
         Already have an account?
