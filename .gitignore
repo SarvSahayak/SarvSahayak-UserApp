@@ -13,6 +13,10 @@
 /build
 
 # misc
+.firebase
+.firebaserc
+firebase.json
+public/404.html
 .eslintcache
 .DS_Store
 .env.local
